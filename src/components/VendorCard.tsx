@@ -8,11 +8,10 @@ export default function VendorCard({ vendor, index = 0 }: { vendor: { id: string
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="rounded-xl shadow-sm hover:shadow-md transition-shadow"
     >
       <Link
         to={`/vendor/${vendor.id}`}
-        className="block bg-white rounded-xl overflow-hidden"
+        className="block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
       >
         {/* Shop image */}
         <div className="relative h-40 overflow-hidden">

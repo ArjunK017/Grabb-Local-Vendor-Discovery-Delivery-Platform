@@ -157,7 +157,7 @@ export default function Home() {
       >
         <div className="relative">
           {/* Carousel viewport */}
-          <div className="overflow-x-hidden">
+          <div className="overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={carouselIndex}

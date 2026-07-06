@@ -1,24 +1,26 @@
 import { motion } from 'framer-motion'
-import { Store, Heart, Shield } from 'lucide-react'
+import { Store, Heart, Shield, Sparkles } from 'lucide-react'
 
 export default function About() {
   return (
-    <div className="py-16 md:py-24">
+    <div className="py-20 md:py-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <h1 className="font-fraunces text-4xl md:text-5xl font-semibold text-navy text-center">About Grabb</h1>
-          <p className="text-center text-gray-600 mt-3 text-lg">Real shops. Real people. Real delivery.</p>
+          <span className="inline-flex items-center gap-1.5 bg-ocean/10 text-ocean text-sm font-medium px-4 py-1.5 rounded-full mb-6 mx-auto w-fit">
+            <Sparkles className="w-4 h-4" /> About Us
+          </span>
+          <h1 className="font-fraunces text-5xl md:text-6xl font-semibold text-navy text-center leading-tight">About Grabb</h1>
+          <p className="text-center text-gray-600 mt-4 text-lg max-w-2xl mx-auto">Real shops. Real people. Real delivery.</p>
         </motion.div>
 
-        {/* ── Founding Story ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mt-12 bg-white rounded-xl p-8 shadow-sm"
+          transition={{ delay: 0.1, duration: 0.5 }}
+          className="mt-14 bg-white rounded-2xl p-8 md:p-10 shadow-sm"
         >
-          <h2 className="font-fraunces text-2xl font-semibold text-navy mb-4">Our Story</h2>
-          <div className="prose prose-gray max-w-none text-sm text-gray-600 space-y-4">
+          <h2 className="font-fraunces text-2xl font-semibold text-navy mb-5">Our Story</h2>
+          <div className="text-gray-600 space-y-5 leading-relaxed">
             <p>
               Grabb started with a simple observation: quick-commerce apps had made delivery incredibly fast, but in the process, they had erased the shopkeeper. Your order came from a warehouse you'd never heard of, packed by someone you'd never meet.
             </p>
@@ -34,27 +36,32 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* ── Mission & Values ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
           className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {[
             { icon: Store, title: 'Support Local', desc: 'Every order strengthens a real neighbourhood business, not a warehouse.' },
             { icon: Heart, title: 'Trust Through Transparency', desc: 'You see the shop, the shopkeeper, and the products before you order. No smoke and mirrors.' },
             { icon: Shield, title: 'Dependability', desc: 'Reliable delivery from shops you can count on. We hold ourselves to the same standard.' },
-          ].map((item) => {
+          ].map((item, i) => {
             const Icon = item.icon
             return (
-              <div key={item.title} className="bg-white rounded-xl p-6 shadow-sm text-center">
-                <div className="w-12 h-12 rounded-full bg-ice flex items-center justify-center mx-auto mb-3">
-                  <Icon className="w-6 h-6 text-ocean" />
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.08 }}
+                className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all text-center"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-ice to-ice-dark flex items-center justify-center mx-auto mb-4">
+                  <Icon className="w-7 h-7 text-ocean" />
                 </div>
-                <h3 className="font-fraunces font-semibold text-navy">{item.title}</h3>
-                <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
-              </div>
+                <h3 className="font-fraunces font-semibold text-navy text-lg">{item.title}</h3>
+                <p className="text-sm text-gray-600 mt-2 leading-relaxed">{item.desc}</p>
+              </motion.div>
             )
           })}
         </motion.div>

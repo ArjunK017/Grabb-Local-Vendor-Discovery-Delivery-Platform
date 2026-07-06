@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Search, ShoppingBag, Truck, Store, BadgeCheck, Package, Smartphone, MapPin } from 'lucide-react'
+import { Search, ShoppingBag, Truck, Store, BadgeCheck, Package, Smartphone, MapPin, Sparkles } from 'lucide-react'
 import SectionWrapper from '../components/SectionWrapper'
 
 const buyerSteps = [
@@ -19,21 +19,25 @@ const vendorSteps = [
 export default function HowItWorks() {
   return (
     <div>
-      {/* Header */}
-      <section className="bg-gradient-to-b from-ice to-white py-16 text-center">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="relative overflow-hidden bg-gradient-to-b from-ice to-white py-20 md:py-28 text-center">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-20%] left-[-10%] w-[40%] h-[40%] rounded-full bg-ocean/5 blur-3xl" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <h1 className="font-fraunces text-4xl md:text-5xl font-semibold text-navy">How It Works</h1>
-            <p className="text-lg text-gray-600 mt-3 max-w-2xl mx-auto">
+            <span className="inline-flex items-center gap-1.5 bg-ocean/10 text-ocean text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+              <Sparkles className="w-4 h-4" /> How It Works
+            </span>
+            <h1 className="font-fraunces text-5xl md:text-6xl font-semibold text-navy leading-tight">How It Works</h1>
+            <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed">
               Whether you're buying or selling, Grabb makes local commerce simple.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Buyer Journey (FR-21) ── */}
       <SectionWrapper id="buyer-journey" title="For Buyers" subtitle="See the real shop before it shows up at your door.">
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto space-y-5">
           {buyerSteps.map((step, i) => {
             const Icon = step.icon
             return (
@@ -42,15 +46,15 @@ export default function HowItWorks() {
                 initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-5 bg-white rounded-xl p-6 shadow-sm"
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="flex items-start gap-5 bg-white rounded-2xl p-6 md:p-7 shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="w-12 h-12 rounded-xl bg-ice flex items-center justify-center shrink-0">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-ice to-ice-dark flex items-center justify-center shrink-0">
                   <Icon className="w-6 h-6 text-ocean" />
                 </div>
                 <div>
-                  <h3 className="font-fraunces font-semibold text-navy text-lg">{step.title}</h3>
-                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">{step.desc}</p>
+                  <h3 className="font-fraunces font-semibold text-navy text-xl mb-1.5">{step.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             )
@@ -58,9 +62,8 @@ export default function HowItWorks() {
         </div>
       </SectionWrapper>
 
-      {/* ── Vendor Journey (FR-22) ── */}
       <SectionWrapper id="vendor-journey" title="For Vendors" subtitle="Your shop, online — we handle the delivery." className="bg-white">
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto space-y-5">
           {vendorSteps.map((step, i) => {
             const Icon = step.icon
             return (
@@ -69,15 +72,15 @@ export default function HowItWorks() {
                 initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-5 bg-ice rounded-xl p-6"
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="flex items-start gap-5 bg-gradient-to-br from-ice to-white rounded-2xl p-6 md:p-7"
               >
-                <div className="w-12 h-12 rounded-xl bg-ocean/10 flex items-center justify-center shrink-0">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-ocean/10 to-ocean/5 flex items-center justify-center shrink-0">
                   <Icon className="w-6 h-6 text-ocean" />
                 </div>
                 <div>
-                  <h3 className="font-fraunces font-semibold text-navy text-lg">{step.title}</h3>
-                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">{step.desc}</p>
+                  <h3 className="font-fraunces font-semibold text-navy text-xl mb-1.5">{step.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             )
@@ -85,39 +88,47 @@ export default function HowItWorks() {
         </div>
       </SectionWrapper>
 
-      {/* ── Delivery Explainer (FR-23) ── */}
       <SectionWrapper id="delivery" title="How Delivery Works" subtitle="Speed as a service — not a warehouse in disguise.">
-        <div className="max-w-4xl mx-auto bg-white rounded-xl p-8 shadow-sm">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="max-w-4xl mx-auto bg-white rounded-2xl p-8 md:p-10 shadow-sm">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <h3 className="font-fraunces text-xl font-semibold text-navy mb-4">Delivery that puts shops first</h3>
-              <ul className="space-y-3">
+              <h3 className="font-fraunces text-2xl font-semibold text-navy mb-5">Delivery that puts shops first</h3>
+              <ul className="space-y-4">
                 {[
                   'Your order goes directly to the shop you chose — not a dark store or anonymous warehouse.',
                   'Grabb\'s delivery partners pick up from the shop\'s counter, just like you would.',
                   'Orders are delivered within your neighbourhood, keeping delivery times fast and reliable.',
                   'Shopkeepers know their customers by name. It\'s local commerce, made digital.',
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <MapPin className="w-4 h-4 text-ocean shrink-0 mt-0.5" />
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="flex items-start gap-3 text-gray-600"
+                  >
+                    <MapPin className="w-5 h-5 text-ocean shrink-0 mt-0.5" />
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
-            <div className="bg-ice rounded-xl p-6">
+            <div className="bg-gradient-to-br from-ice to-white rounded-2xl p-8">
               <div className="text-center">
-                <Truck className="w-16 h-16 text-ocean mx-auto mb-3" />
-                <p className="text-sm text-gray-600 font-medium">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-ocean to-ocean-dark flex items-center justify-center mx-auto mb-4 shadow-lg shadow-ocean/20">
+                  <Truck className="w-8 h-8 text-white" />
+                </div>
+                <p className="text-gray-600 font-medium leading-relaxed">
                   "We're not a quick-commerce warehouse. We're your neighbourhood shop, now with delivery."
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-gray-200">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Dark store model</span>
-                  <span className="text-ocean font-medium">Grabb model</span>
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="flex justify-between text-sm font-medium mb-1">
+                  <span className="text-gray-400">Dark store model</span>
+                  <span className="text-ocean">Grabb model</span>
                 </div>
-                <div className="flex justify-between text-xs text-gray-400 mt-1">
+                <div className="flex justify-between text-xs text-gray-400">
                   <span>Anonymous warehouse</span>
                   <span>Named local shop</span>
                 </div>

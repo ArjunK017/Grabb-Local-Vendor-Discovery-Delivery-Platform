@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Menu, X, ShoppingBag } from 'lucide-react'
 
 const navLinks = [
@@ -14,25 +15,27 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white/80 backdrop-blur-xl border-b border-ice-dark sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 text-ocean font-bold text-xl">
-            <ShoppingBag className="w-6 h-6" />
-            <span className="font-fraunces">Grabb</span>
+        <div className="flex items-center justify-between h-16 md:h-20">
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-ocean to-ocean-dark flex items-center justify-center text-white shadow-lg shadow-ocean/20 group-hover:shadow-ocean/30 transition-shadow">
+              <ShoppingBag className="w-5 h-5" />
+            </div>
+            <span className="font-fraunces text-xl font-semibold text-navy">Grabb</span>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 end={link.to === '/'}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-colors ${
-                    isActive ? 'text-ocean' : 'text-navy hover:text-ocean'
+                  `text-sm font-medium transition-colors relative after:absolute after:bottom-[-22px] after:left-0 after:h-[2px] after:rounded-full after:transition-all ${
+                    isActive
+                      ? 'text-ocean after:bg-ocean after:w-full'
+                      : 'text-navy/70 hover:text-navy after:bg-ocean/0 after:w-0 hover:after:w-full'
                   }`
                 }
               >
@@ -41,27 +44,29 @@ export default function Header() {
             ))}
             <Link
               to="/become-a-vendor"
-              className="bg-ocean text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-sky transition-colors"
+              className="bg-gradient-to-r from-ocean to-ocean-dark text-white px-5 py-2.5 rounded-xl text-sm font-medium shadow-lg shadow-ocean/20 hover:shadow-xl hover:shadow-ocean/30 hover:-translate-y-0.5 transition-all"
             >
               Become a Vendor
             </Link>
           </nav>
 
-          {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded-lg text-navy hover:bg-ice"
+            className="md:hidden p-2.5 rounded-xl text-navy hover:bg-ice transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile nav */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100">
-          <nav className="px-4 py-4 space-y-3">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden bg-white border-t border-ice-dark"
+        >
+          <nav className="px-4 py-6 space-y-1">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
@@ -69,8 +74,8 @@ export default function Header() {
                 end={link.to === '/'}
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
-                  `block text-sm font-medium transition-colors ${
-                    isActive ? 'text-ocean' : 'text-navy hover:text-ocean'
+                  `block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                    isActive ? 'bg-ice text-ocean' : 'text-navy/70 hover:bg-ice/50 hover:text-navy'
                   }`
                 }
               >
@@ -80,12 +85,12 @@ export default function Header() {
             <Link
               to="/become-a-vendor"
               onClick={() => setMobileOpen(false)}
-              className="block text-center bg-ocean text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-sky transition-colors"
+              className="block text-center mt-3 bg-gradient-to-r from-ocean to-ocean-dark text-white px-4 py-3 rounded-xl text-sm font-medium shadow-lg shadow-ocean/20"
             >
               Become a Vendor
             </Link>
           </nav>
-        </div>
+        </motion.div>
       )}
     </header>
   )

@@ -3,12 +3,11 @@ import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   ArrowLeft, BadgeCheck, MapPin, Star, ShoppingBag, Phone, MessageCircle,
-  Store
+  Store, CheckCircle
 } from 'lucide-react'
 import vendors from '../data/vendors.json'
 import categories from '../data/categories.json'
 
-/* ── Order Enquiry Form (FR-15) ── */
 function OrderForm({ vendor, onClose }: { vendor: { id: string; name: string }; onClose: () => void }) {
   const [form, setForm] = useState<{ name: string; phone: string; message: string }>({ name: '', phone: '', message: '' })
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -28,55 +27,54 @@ function OrderForm({ vendor, onClose }: { vendor: { id: string; name: string }; 
     const errs = validate()
     setErrors(errs)
     if (Object.keys(errs).length === 0) {
-      // Formspree / EmailJS can be wired here; for now simulate success
       setSubmitted(true)
     }
   }
 
   if (submitted) {
     return (
-      <div className="text-center py-8">
-        <ShoppingBag className="w-12 h-12 text-ocean mx-auto mb-3" />
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-8">
+        <CheckCircle className="w-14 h-14 text-green-500 mx-auto mb-4" />
         <h3 className="font-fraunces text-lg font-semibold text-navy">Enquiry Sent!</h3>
-        <p className="text-sm text-gray-600 mt-1">{vendor.name} will get back to you shortly.</p>
+        <p className="text-sm text-gray-600 mt-2">{vendor.name} will get back to you shortly.</p>
         <button onClick={onClose} className="mt-4 text-ocean text-sm font-medium hover:underline">Close</button>
-      </div>
+      </motion.div>
     )
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <div>
-        <label className="block text-sm font-medium text-navy mb-1">Your Name *</label>
+        <label className="block text-sm font-medium text-navy mb-1.5">Your Name *</label>
         <input
           type="text"
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
-          className={`w-full px-3 py-2 rounded-lg border text-sm focus:outline-none focus:ring-2 focus:ring-ocean/30 ${
+          className={`w-full px-3.5 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-ocean/20 focus:border-ocean transition-shadow ${
             errors.name ? 'border-red-400' : 'border-gray-200'
           }`}
         />
         {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
       </div>
       <div>
-        <label className="block text-sm font-medium text-navy mb-1">Phone Number *</label>
+        <label className="block text-sm font-medium text-navy mb-1.5">Phone Number *</label>
         <input
           type="tel"
           value={form.phone}
           onChange={(e) => setForm({ ...form, phone: e.target.value })}
-          className={`w-full px-3 py-2 rounded-lg border text-sm focus:outline-none focus:ring-2 focus:ring-ocean/30 ${
+          className={`w-full px-3.5 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-ocean/20 focus:border-ocean transition-shadow ${
             errors.phone ? 'border-red-400' : 'border-gray-200'
           }`}
         />
         {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
       </div>
       <div>
-        <label className="block text-sm font-medium text-navy mb-1">What would you like to order? *</label>
+        <label className="block text-sm font-medium text-navy mb-1.5">What would you like to order? *</label>
         <textarea
           rows={3}
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className={`w-full px-3 py-2 rounded-lg border text-sm focus:outline-none focus:ring-2 focus:ring-ocean/30 ${
+          className={`w-full px-3.5 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-ocean/20 focus:border-ocean transition-shadow ${
             errors.message ? 'border-red-400' : 'border-gray-200'
           }`}
         />
@@ -84,7 +82,7 @@ function OrderForm({ vendor, onClose }: { vendor: { id: string; name: string }; 
       </div>
       <button
         type="submit"
-        className="w-full bg-ocean text-white py-2.5 rounded-lg font-medium text-sm hover:bg-sky transition-colors"
+        className="w-full bg-gradient-to-r from-ocean to-ocean-dark text-white py-3 rounded-xl font-medium text-sm shadow-md shadow-ocean/20 hover:shadow-lg hover:shadow-ocean/30 hover:-translate-y-0.5 transition-all"
       >
         Send Enquiry
       </button>
@@ -99,11 +97,13 @@ export default function VendorStorefront() {
 
   if (!vendor) {
     return (
-      <div className="text-center py-20">
-        <Store className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+      <div className="text-center py-24">
+        <div className="w-16 h-16 rounded-2xl bg-ice flex items-center justify-center mx-auto mb-4">
+          <Store className="w-8 h-8 text-gray-400" />
+        </div>
         <h2 className="font-fraunces text-2xl text-navy">Shop not found</h2>
         <p className="text-gray-500 mt-2">This vendor doesn't exist or may have been removed.</p>
-        <Link to="/explore" className="inline-flex items-center gap-1 text-ocean mt-4 hover:underline">
+        <Link to="/explore" className="inline-flex items-center gap-1 text-ocean mt-4 font-medium hover:underline">
           <ArrowLeft className="w-4 h-4" /> Back to Explore
         </Link>
       </div>
@@ -113,120 +113,120 @@ export default function VendorStorefront() {
   const category = categories.find((c) => c.id === vendor.category)
 
   return (
-    <div className="pb-16">
-      {/* ── Banner (FR-12) ── */}
-      <div className="relative h-48 md:h-64 overflow-hidden">
+    <div className="pb-20">
+      <div className="relative h-56 md:h-72 overflow-hidden">
         <img src={vendor.image} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back link */}
-        <Link to="/explore" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-ocean mt-4 transition-colors">
-          <ArrowLeft className="w-4 h-4" /> Back to Explore
+        <Link to="/explore" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-ocean mt-6 transition-colors group">
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Explore
         </Link>
 
-        <div className="grid lg:grid-cols-3 gap-8 mt-6">
-          {/* ── Main Content ── */}
+        <div className="grid lg:grid-cols-3 gap-10 mt-6">
           <div className="lg:col-span-2">
-            {/* Profile header (FR-12) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex items-start gap-4"
+              className="flex items-start gap-5"
             >
               <img
                 src={vendor.logo}
                 alt={`${vendor.name} logo`}
-                className="w-20 h-20 rounded-xl object-cover border-4 border-white -mt-4 relative z-10 shadow-md"
+                className="w-24 h-24 rounded-2xl object-cover border-4 border-white -mt-12 relative z-10 shadow-lg"
               />
-              <div className="pt-2">
+              <div className="pt-1">
                 <div className="flex items-center gap-2">
                   <h1 className="font-fraunces text-2xl md:text-3xl font-semibold text-navy">{vendor.name}</h1>
-                  {vendor.verified && <BadgeCheck className="w-5 h-5 text-sky" />}
+                  {vendor.verified && <BadgeCheck className="w-6 h-6 text-sky" />}
                 </div>
-                <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 mt-1">
-                  <span className="capitalize flex items-center gap-1">
-                    <Store className="w-3.5 h-3.5" /> {category?.name || vendor.category}
+                <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 mt-2">
+                  <span className="capitalize flex items-center gap-1.5 bg-ice px-3 py-1 rounded-full">
+                    <Store className="w-3.5 h-3.5 text-ocean" /> {category?.name || vendor.category}
                   </span>
-                  <span className="flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5" /> {vendor.area}
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-ocean" /> {vendor.area}
                   </span>
                   {vendor.reviews && vendor.reviews.length > 0 && (
-                    <span className="flex items-center gap-1">
-                      <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
-                      {vendor.reviews[0].rating}.0 ({vendor.reviews.length})
+                    <span className="flex items-center gap-1.5">
+                      <Star className="w-3.5 h-3.5 text-gold fill-gold" />
+                      <span className="font-medium text-navy">{vendor.reviews[0].rating}.0</span>
+                      <span className="text-gray-400">({vendor.reviews.length})</span>
                     </span>
                   )}
                 </div>
               </div>
             </motion.div>
 
-            {/* Shop story (FR-13) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="mt-8 bg-white rounded-xl p-6 shadow-sm"
+              className="mt-8 bg-white rounded-2xl p-6 md:p-8 shadow-sm"
             >
-              <h2 className="font-fraunces text-lg font-semibold text-navy mb-3">About the Shop</h2>
-              <p className="text-gray-600 text-sm leading-relaxed">{vendor.story}</p>
+              <h2 className="font-fraunces text-xl font-semibold text-navy mb-4">About the Shop</h2>
+              <p className="text-gray-600 leading-relaxed">{vendor.story}</p>
             </motion.div>
 
-            {/* Product showcase (FR-14) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mt-6"
+              className="mt-8"
             >
-              <h2 className="font-fraunces text-lg font-semibold text-navy mb-4">Products</h2>
+              <h2 className="font-fraunces text-xl font-semibold text-navy mb-5">Products</h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {vendor.products.map((product, i) => (
-                  <div key={i} className="bg-white rounded-xl p-3 shadow-sm text-center">
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.05 * i }}
+                    className="bg-white rounded-xl p-3 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
+                  >
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-24 object-cover rounded-lg"
+                      className="w-full h-28 object-cover rounded-lg"
                       loading="lazy"
                     />
-                    <p className="text-sm font-medium text-navy mt-2">{product.name}</p>
-                    <p className="text-xs text-ocean font-medium">{product.price}</p>
-                  </div>
+                    <p className="text-sm font-medium text-navy mt-3">{product.name}</p>
+                    <p className="text-xs text-ocean font-semibold mt-0.5">{product.price}</p>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
 
-            {/* Reviews (FR-16) */}
             {vendor.reviews && vendor.reviews.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="mt-8"
+                className="mt-10"
               >
-                <h2 className="font-fraunces text-lg font-semibold text-navy mb-4">
-                  Reviews ({vendor.reviews.length})
+                <h2 className="font-fraunces text-xl font-semibold text-navy mb-5">
+                  Reviews <span className="text-gray-400 font-normal">({vendor.reviews.length})</span>
                 </h2>
                 <div className="space-y-4">
                   {vendor.reviews.map((review, i) => (
-                    <div key={i} className="bg-white rounded-xl p-4 shadow-sm">
-                      <div className="flex items-center justify-between mb-2">
+                    <div key={i} className="bg-white rounded-xl p-5 shadow-sm">
+                      <div className="flex items-center justify-between mb-3">
                         <span className="text-sm font-medium text-navy">{review.name}</span>
                         <div className="flex items-center gap-0.5">
                           {[...Array(5)].map((_, s) => (
                             <Star
                               key={s}
-                              className={`w-3.5 h-3.5 ${
+                              className={`w-4 h-4 ${
                                 s < review.rating
-                                  ? 'text-yellow-500 fill-yellow-500'
+                                  ? 'text-gold fill-gold'
                                   : 'text-gray-200'
                               }`}
                             />
                           ))}
                         </div>
                       </div>
-                      <p className="text-sm text-gray-600">{review.text}</p>
+                      <p className="text-sm text-gray-600 leading-relaxed">{review.text}</p>
                     </div>
                   ))}
                 </div>
@@ -234,15 +234,14 @@ export default function VendorStorefront() {
             )}
           </div>
 
-          {/* ── Sidebar — Order Actions (FR-15) ── */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             className="lg:col-span-1"
           >
-            <div className="bg-white rounded-xl p-6 shadow-sm sticky top-24">
-              <h3 className="font-fraunces text-lg font-semibold text-navy mb-4">Order from this shop</h3>
+            <div className="bg-white rounded-2xl p-6 md:p-7 shadow-sm sticky top-24 border border-ice">
+              <h3 className="font-fraunces text-xl font-semibold text-navy mb-5">Order from this shop</h3>
 
               {showOrderForm ? (
                 <OrderForm vendor={vendor} onClose={() => setShowOrderForm(false)} />
@@ -250,7 +249,7 @@ export default function VendorStorefront() {
                 <div className="space-y-3">
                   <button
                     onClick={() => setShowOrderForm(true)}
-                    className="w-full flex items-center justify-center gap-2 bg-ocean text-white py-2.5 rounded-lg font-medium text-sm hover:bg-sky transition-colors"
+                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-ocean to-ocean-dark text-white py-3 rounded-xl font-medium text-sm shadow-md shadow-ocean/20 hover:shadow-lg hover:shadow-ocean/30 hover:-translate-y-0.5 transition-all"
                   >
                     <ShoppingBag className="w-4 h-4" /> Send Enquiry
                   </button>
@@ -258,17 +257,17 @@ export default function VendorStorefront() {
                     href={`https://wa.me/911234567890?text=Hi!%20I'd%20like%20to%20order%20from%20${encodeURIComponent(vendor.name)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 border-2 border-green-500 text-green-600 py-2.5 rounded-lg font-medium text-sm hover:bg-green-50 transition-colors"
+                    className="w-full flex items-center justify-center gap-2 border-2 border-green-500 text-green-600 py-3 rounded-xl font-medium text-sm hover:bg-green-50 hover:-translate-y-0.5 transition-all"
                   >
                     <MessageCircle className="w-4 h-4" /> Order via WhatsApp
                   </a>
                   <a
                     href="tel:+911234567890"
-                    className="w-full flex items-center justify-center gap-2 border-2 border-ocean text-ocean py-2.5 rounded-lg font-medium text-sm hover:bg-ice transition-colors"
+                    className="w-full flex items-center justify-center gap-2 border-2 border-ocean text-ocean py-3 rounded-xl font-medium text-sm hover:bg-ice hover:-translate-y-0.5 transition-all"
                   >
                     <Phone className="w-4 h-4" /> Call the Shop
                   </a>
-                  <p className="text-xs text-gray-400 text-center mt-2">
+                  <p className="text-xs text-gray-400 text-center mt-3 leading-relaxed">
                     Checkout &amp; payments coming soon. For now, the shop will contact you to confirm.
                   </p>
                 </div>

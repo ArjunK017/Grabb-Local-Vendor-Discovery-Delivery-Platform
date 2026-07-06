@@ -18,19 +18,20 @@ export default function CategoryTile({ category, index = 0 }: { category: { id: 
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
     >
       <Link
         to={`/explore?category=${category.id}`}
-        className="flex flex-col items-center gap-2 p-5 bg-white rounded-xl shadow-sm hover:shadow-md hover:bg-sky/10 transition-all"
+        className="flex flex-col items-center gap-3 p-6 bg-white rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
       >
-        <div className="w-12 h-12 rounded-full bg-ice flex items-center justify-center text-ocean">
-          <IconComponent className="w-6 h-6" />
+        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-ice to-ice-dark flex items-center justify-center text-ocean group-hover:from-ocean group-hover:to-ocean-dark group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-ocean/20">
+          <IconComponent className="w-7 h-7" />
         </div>
-        <span className="font-fraunces font-medium text-navy text-sm text-center">{category.name}</span>
-        <span className="text-xs text-gray-500 text-center">{category.description}</span>
+        <span className="font-fraunces font-semibold text-navy text-sm text-center">{category.name}</span>
+        <span className="text-xs text-gray-500 text-center leading-relaxed">{category.description}</span>
       </Link>
     </motion.div>
   )

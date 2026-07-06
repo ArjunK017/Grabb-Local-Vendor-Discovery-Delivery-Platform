@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Store, Search, Truck, BadgeCheck, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowRight, Store, Search, Truck, BadgeCheck, ShoppingBag, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 import SectionWrapper from '../components/SectionWrapper'
 import CategoryTile from '../components/CategoryTile'
 import VendorCard from '../components/VendorCard'
@@ -25,7 +25,15 @@ const stats = [
 export default function Home() {
   const featuredVendors = vendors.slice(0, 4)
   const [carouselIndex, setCarouselIndex] = useState(0)
-  const itemsPerPage = window.innerWidth >= 1024 ? 4 : window.innerWidth >= 640 ? 2 : 1
+  const [itemsPerPage, setItemsPerPage] = useState(4)
+
+  useEffect(() => {
+    const update = () => setItemsPerPage(window.innerWidth >= 1024 ? 4 : window.innerWidth >= 640 ? 2 : 1)
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
   const maxIndex = Math.max(0, featuredVendors.length - itemsPerPage)
 
   const nextSlide = useCallback(() => {
@@ -36,7 +44,6 @@ export default function Home() {
     setCarouselIndex((prev) => (prev <= 0 ? maxIndex : prev - 1))
   }, [maxIndex])
 
-  /* Auto-rotate every 5s */
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000)
     return () => clearInterval(timer)
@@ -45,61 +52,72 @@ export default function Home() {
   return (
     <>
       {/* ── Hero Section (FR-01, FR-02) ── */}
-      <section className="bg-gradient-to-b from-ice to-white py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left: Text */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-ice to-white py-20 md:py-32">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-20%] left-[-10%] w-[40%] h-[40%] rounded-full bg-ocean/5 blur-3xl" />
+          <div className="absolute bottom-[-10%] right-[-5%] w-[30%] h-[30%] rounded-full bg-sky/10 blur-3xl" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
             >
-              <span className="inline-block bg-ocean/10 text-ocean text-sm font-medium px-3 py-1 rounded-full mb-4">
-                Shop Local. Delivered.
+              <span className="inline-flex items-center gap-1.5 bg-ocean/10 text-ocean text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+                <Sparkles className="w-4 h-4" /> Shop Local. Delivered.
               </span>
-              <h1 className="font-fraunces text-4xl md:text-5xl lg:text-6xl font-semibold text-navy leading-tight">
+              <h1 className="font-fraunces text-5xl md:text-6xl lg:text-7xl font-semibold text-navy leading-[1.05] tracking-tight">
                 Real local shops.
                 <br />
                 <span className="text-ocean">Delivered to your door.</span>
               </h1>
-              <p className="mt-4 text-lg text-gray-600 max-w-lg">
+              <p className="mt-5 text-lg text-gray-600 max-w-lg leading-relaxed">
                 Grabb is the opposite of quick-commerce warehouses. See the real shop, know who you're buying from, and get it delivered fast — all without the anonymity.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <Link
                   to="/explore"
-                  className="inline-flex items-center gap-2 bg-ocean text-white px-6 py-3 rounded-lg font-medium hover:bg-sky transition-colors"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-ocean to-ocean-dark text-white px-7 py-3.5 rounded-xl font-medium shadow-lg shadow-ocean/20 hover:shadow-xl hover:shadow-ocean/30 hover:-translate-y-0.5 transition-all"
                 >
                   Explore Local Shops <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   to="/become-a-vendor"
-                  className="inline-flex items-center gap-2 border-2 border-ocean text-ocean px-6 py-3 rounded-lg font-medium hover:bg-ocean hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 border-2 border-ocean text-ocean px-7 py-3.5 rounded-xl font-medium hover:bg-ocean hover:text-white transition-all hover:-translate-y-0.5"
                 >
                   Become a Vendor <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </motion.div>
 
-            {/* Right: Hero visual */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
               className="relative"
             >
+              <div className="absolute inset-0 bg-gradient-to-tr from-ocean/10 to-sky/10 rounded-3xl transform rotate-2 scale-105" />
               <img
                 src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600&h=400&fit=crop"
                 alt="Local shopfront"
-                className="rounded-2xl shadow-lg w-full h-72 md:h-96 object-cover"
+                className="relative rounded-2xl shadow-xl w-full h-80 md:h-96 object-cover"
               />
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3">
-                <BadgeCheck className="w-8 h-8 text-sky" />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3"
+              >
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky to-ocean flex items-center justify-center">
+                  <BadgeCheck className="w-6 h-6 text-white" />
+                </div>
                 <div>
                   <p className="text-sm font-medium text-navy">Verified Local Shop</p>
                   <p className="text-xs text-gray-500">Know exactly who you buy from</p>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -118,17 +136,17 @@ export default function Home() {
             return (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center"
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="text-center group"
               >
-                <div className="w-14 h-14 rounded-full bg-ice flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-7 h-7 text-ocean" />
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-ice to-ice-dark flex items-center justify-center mx-auto mb-5 group-hover:from-ocean group-hover:to-ocean-dark group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-ocean/20">
+                  <Icon className="w-7 h-7 text-ocean group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="font-fraunces font-semibold text-navy text-lg">{step.title}</h3>
-                <p className="text-sm text-gray-600 mt-2">{step.desc}</p>
+                <h3 className="font-fraunces font-semibold text-navy text-xl mb-2">{step.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
               </motion.div>
             )
           })}
@@ -141,7 +159,7 @@ export default function Home() {
         title="Browse by Category"
         subtitle="From daily groceries to artisan gifts — find the shop that has what you need."
       >
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
           {categories.map((cat, i) => (
             <CategoryTile key={cat.id} category={cat} index={i} />
           ))}
@@ -156,7 +174,6 @@ export default function Home() {
         className="bg-white"
       >
         <div className="relative">
-          {/* Carousel viewport */}
           <div className="overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
@@ -176,12 +193,11 @@ export default function Home() {
             </AnimatePresence>
           </div>
 
-          {/* Carousel controls */}
           {featuredVendors.length > itemsPerPage && (
-            <div className="flex items-center justify-center gap-4 mt-6">
+            <div className="flex items-center justify-center gap-4 mt-8">
               <button
                 onClick={prevSlide}
-                className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-navy hover:bg-ice transition-colors"
+                className="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-navy hover:bg-ice hover:border-ocean/20 transition-all shadow-sm hover:shadow-md"
                 aria-label="Previous vendors"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -191,8 +207,8 @@ export default function Home() {
                   <button
                     key={i}
                     onClick={() => setCarouselIndex(i)}
-                    className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                      i === carouselIndex ? 'bg-ocean' : 'bg-gray-300'
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      i === carouselIndex ? 'bg-ocean scale-110' : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                     aria-label={`Go to slide ${i + 1}`}
                   />
@@ -200,7 +216,7 @@ export default function Home() {
               </div>
               <button
                 onClick={nextSlide}
-                className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-navy hover:bg-ice transition-colors"
+                className="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-navy hover:bg-ice hover:border-ocean/20 transition-all shadow-sm hover:shadow-md"
                 aria-label="Next vendors"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -208,12 +224,12 @@ export default function Home() {
             </div>
           )}
         </div>
-        <div className="text-center mt-8">
+        <div className="text-center mt-10">
           <Link
             to="/explore"
-            className="inline-flex items-center gap-2 text-ocean font-medium hover:text-sky transition-colors"
+            className="inline-flex items-center gap-2 text-ocean font-medium hover:text-ocean-light transition-colors group"
           >
-            View All Shops <ArrowRight className="w-4 h-4" />
+            View All Shops <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </SectionWrapper>
@@ -225,11 +241,20 @@ export default function Home() {
         subtitle="Every order through Grabb supports a real neighbourhood business."
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="font-fraunces text-3xl md:text-4xl font-bold text-ocean">{stat.value}</div>
-              <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
-            </div>
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="text-center group"
+            >
+              <div className="font-fraunces text-4xl md:text-5xl font-bold text-ocean group-hover:scale-105 transition-transform duration-300">
+                {stat.value}
+              </div>
+              <div className="text-sm text-gray-600 mt-2">{stat.label}</div>
+            </motion.div>
           ))}
         </div>
       </SectionWrapper>

@@ -1,5 +1,5 @@
 [
-  { "id": "grocery", "name": "Grocery", "icon": "ShoppingCart", "description": "Fresh produce, staples & daily essentials" },
+  { "id": "grocery", "name": "Grocery", "icon": "ShoppingCart", "description": "Fresh produce & daily essentials" },
   { "id": "bakery", "name": "Bakery", "icon": "Croissant", "description": "Fresh bread, pastries & cakes" },
   { "id": "pharmacy", "name": "Pharmacy", "icon": "Pill", "description": "Medicines, health & wellness" },
   { "id": "boutique", "name": "Boutique", "icon": "Shirt", "description": "Fashion, accessories & gifts" },

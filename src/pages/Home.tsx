@@ -65,7 +65,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <span className="inline-flex items-center gap-1.5 bg-ocean/10 text-ocean text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+              <span className="inline-flex items-center gap-1.5 bg-ocean/10 text-ocean text-sm font-medium px-4 py-1.5 rounded-full mb-6 shadow-lg shadow-ocean/5 ring-1 ring-ocean/10">
                 <Sparkles className="w-4 h-4" /> Shop Local. Delivered.
               </span>
               <h1 className="font-fraunces text-5xl md:text-6xl lg:text-7xl font-semibold text-navy leading-[1.05] tracking-tight">
@@ -79,13 +79,13 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 mt-8">
                 <Link
                   to="/explore"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-ocean to-ocean-dark text-white px-7 py-3.5 rounded-xl font-medium shadow-lg shadow-ocean/20 hover:shadow-xl hover:shadow-ocean/30 hover:-translate-y-0.5 transition-all"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-ocean to-ocean-dark text-white px-7 py-3.5 rounded-xl font-medium shadow-lg shadow-ocean/20 hover:shadow-xl hover:shadow-ocean/30 hover:-translate-y-0.5 transition-all active:scale-[0.98]"
                 >
                   Explore Local Shops <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   to="/become-a-vendor"
-                  className="inline-flex items-center gap-2 border-2 border-ocean text-ocean px-7 py-3.5 rounded-xl font-medium hover:bg-ocean hover:text-white transition-all hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 border-2 border-ocean text-ocean px-7 py-3.5 rounded-xl font-medium hover:bg-ocean hover:text-white transition-all hover:-translate-y-0.5 active:scale-[0.98]"
                 >
                   Become a Vendor <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -224,7 +224,7 @@ export default function Home() {
             </div>
           )}
         </div>
-        <div className="text-center mt-10">
+        <div className="text-center mt-12">
           <Link
             to="/explore"
             className="inline-flex items-center gap-2 text-ocean font-medium hover:text-ocean-light transition-colors group"

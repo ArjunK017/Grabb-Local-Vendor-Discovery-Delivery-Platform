@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* ── Brand Colour Palette ── */
+/* Primary — Ocean Blue    #1F6FB2 */
+/* Accent  — Sky Blue      #7FC7E8 */
+/* Secondary — Deep Navy   #16324F */
+/* Background — Ice Blue   #EEF5FB */
+
+@theme {
+  --color-ocean: #1F6FB2;
+  --color-sky: #7FC7E8;
+  --color-navy: #16324F;
+  --color-ice: #EEF5FB;
+}
+
+/* ── Base styles ── */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-ice);
+  color: var(--color-navy);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fraunces', serif;
+}

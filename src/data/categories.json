@@ -1,0 +1,10 @@
+[
+  { "id": "grocery", "name": "Grocery", "icon": "ShoppingCart", "description": "Fresh produce, staples & daily essentials" },
+  { "id": "bakery", "name": "Bakery", "icon": "Croissant", "description": "Fresh bread, pastries & cakes" },
+  { "id": "pharmacy", "name": "Pharmacy", "icon": "Pill", "description": "Medicines, health & wellness" },
+  { "id": "boutique", "name": "Boutique", "icon": "Shirt", "description": "Fashion, accessories & gifts" },
+  { "id": "stationery", "name": "Stationery", "icon": "BookOpen", "description": "Books, paper & office supplies" },
+  { "id": "florist", "name": "Florist", "icon": "Flower2", "description": "Fresh flowers & arrangements" },
+  { "id": "meat", "name": "Meat & Fish", "icon": "Fish", "description": "Fresh cuts & seafood" },
+  { "id": "cafe", "name": "Café", "icon": "Coffee", "description": "Coffee, snacks & quick bites" }
+]

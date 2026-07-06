@@ -1,0 +1,165 @@
+[
+  {
+    "id": "patel-grocery",
+    "name": "Patel's Grocery",
+    "category": "grocery",
+    "area": "Indiranagar",
+    "tagline": "Your neighbourhood grocery store since 1998",
+    "story": "We started as a small kirana shop in Indiranagar and have grown with the community. We personally select every item on our shelves to ensure freshness and quality. When you order from us, you get the same produce you'd pick yourself.",
+    "image": "https://images.unsplash.com/photo-1767364084218-a18f3ea7e93f?w=400&h=300&fit=crop",
+    "logo": "https://images.unsplash.com/photo-1767364084218-a18f3ea7e93f?w=80&h=80&fit=crop",
+    "verified": true,
+    "products": [
+      { "name": "Fresh Vegetables Bundle", "price": "₹120 - ₹250", "image": "https://images.unsplash.com/photo-1771659753573-e8498a262168?w=200&h=200&fit=crop" },
+      { "name": "Organic Dal Mix", "price": "₹180 - ₹350", "image": "https://images.unsplash.com/photo-1763368403529-0b8d9108cf9c?w=200&h=200&fit=crop" },
+      { "name": "Farm Fresh Eggs (6 pcs)", "price": "₹60", "image": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=200&h=200&fit=crop" },
+      { "name": "Basmati Rice (1kg)", "price": "₹140", "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=200&h=200&fit=crop" }
+    ],
+    "reviews": [
+      { "name": "Ananya M.", "rating": 5, "text": "Always fresh produce! Patel's is my go-to for weekly groceries." },
+      { "name": "Rohit K.", "rating": 4, "text": "Fast delivery and exactly what I ordered. Great local shop." }
+    ]
+  },
+  {
+    "id": "heaven-bakery",
+    "name": "Heaven Bakery",
+    "category": "bakery",
+    "area": "Koramangala",
+    "tagline": "Baked fresh every morning, with love",
+    "story": "Heaven Bakery was born from a home kitchen experiment that turned into the neighbourhood's favourite spot for bread and pastries. We use traditional techniques and the finest ingredients — no shortcuts, just honest baking.",
+    "image": "https://images.unsplash.com/photo-1774669081553-4ef841520c05?w=400&h=300&fit=crop",
+    "logo": "https://images.unsplash.com/photo-1774669081553-4ef841520c05?w=80&h=80&fit=crop",
+    "verified": true,
+    "products": [
+      { "name": "Sourdough Loaf", "price": "₹120", "image": "https://images.unsplash.com/photo-1767065887975-a09671b8d683?w=200&h=200&fit=crop" },
+      { "name": "Chocolate Croissant", "price": "₹85", "image": "https://images.unsplash.com/photo-1769138885118-c1261518414d?w=200&h=200&fit=crop" },
+      { "name": "Blueberry Muffin", "price": "₹65", "image": "https://images.unsplash.com/photo-1722251172903-cc8774501df7?w=200&h=200&fit=crop" },
+      { "name": "Artisan Baguette", "price": "₹90", "image": "https://images.unsplash.com/photo-1753011963953-78d1aee559a9?w=200&h=200&fit=crop" }
+    ],
+    "reviews": [
+      { "name": "Priya S.", "rating": 5, "text": "Best sourdough in town! Fresh every morning." },
+      { "name": "Arjun D.", "rating": 5, "text": "Their croissants are flaky perfection. Love ordering from here!" }
+    ]
+  },
+  {
+    "id": "wellcare-pharmacy",
+    "name": "WellCare Pharmacy",
+    "category": "pharmacy",
+    "area": "JP Nagar",
+    "tagline": "Your health, our priority — since 2005",
+    "story": "WellCare Pharmacy has been serving JP Nagar for nearly two decades. We stock a wide range of medicines, wellness products, and healthcare essentials. Our pharmacist is always available to help you find the right product.",
+    "image": "https://images.unsplash.com/photo-1767622947900-ddace45fdd41?w=400&h=300&fit=crop",
+    "logo": "https://images.unsplash.com/photo-1767622947900-ddace45fdd41?w=80&h=80&fit=crop",
+    "verified": true,
+    "products": [
+      { "name": "Vitamin C Tablets (60)", "price": "₹250", "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200&h=200&fit=crop" },
+      { "name": "First Aid Kit", "price": "₹350", "image": "https://images.unsplash.com/photo-1584515933487-779824d29309?w=200&h=200&fit=crop" },
+      { "name": "Multivitamin Pack", "price": "₹420", "image": "https://images.unsplash.com/photo-1550572017-edd951b55104?w=200&h=200&fit=crop" },
+      { "name": "Hand Sanitizer (500ml)", "price": "₹95", "image": "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=200&h=200&fit=crop" }
+    ],
+    "reviews": [
+      { "name": "Meera N.", "rating": 5, "text": "Always have what I need. Very reliable pharmacy." },
+      { "name": "Vikram P.", "rating": 4, "text": "Quick delivery of medicines. Great service." }
+    ]
+  },
+  {
+    "id": "urban-vogue",
+    "name": "Urban Vogue Boutique",
+    "category": "boutique",
+    "area": "MG Road",
+    "tagline": "Curated fashion for the modern Indian woman",
+    "story": "Urban Vogue brings you handpicked collections from local artisans and emerging designers. We believe fashion should be personal, sustainable, and accessible. Every piece in our store has a story.",
+    "image": "https://images.unsplash.com/photo-1777628530456-bb93d3a03faf?w=400&h=300&fit=crop",
+    "logo": "https://images.unsplash.com/photo-1777628530456-bb93d3a03faf?w=80&h=80&fit=crop",
+    "verified": false,
+    "products": [
+      { "name": "Handloom Scarf", "price": "₹450", "image": "https://images.unsplash.com/photo-1717586756136-d9a3eeb1fa6f?w=200&h=200&fit=crop" },
+      { "name": "Earrings Set", "price": "₹320", "image": "https://images.unsplash.com/photo-1752074211157-441d9f0c701c?w=200&h=200&fit=crop" },
+      { "name": "Cotton Tote Bag", "price": "₹250", "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=200&h=200&fit=crop" },
+      { "name": "Block Print Kurta", "price": "₹899", "image": "https://images.unsplash.com/photo-1742800764280-d51117b7eb0a?w=200&h=200&fit=crop" }
+    ],
+    "reviews": [
+      { "name": "Kavita R.", "rating": 4, "text": "Lovely collection and the quality is amazing!" }
+    ]
+  },
+  {
+    "id": "paper-trails",
+    "name": "Paper Trails Stationery",
+    "category": "stationery",
+    "area": "HSR Layout",
+    "tagline": "Everything for the stationery lover",
+    "story": "Paper Trails is a dream realised for two friends who never outgrew their love for stationery. From premium fountain pens to colourful washi tapes, we stock everything that makes putting pen to paper a joy.",
+    "image": "https://images.unsplash.com/photo-1779684998928-2d824ee831cf?w=400&h=300&fit=crop",
+    "logo": "https://images.unsplash.com/photo-1779684998928-2d824ee831cf?w=80&h=80&fit=crop",
+    "verified": true,
+    "products": [
+      { "name": "Fountain Pen Set", "price": "₹599", "image": "https://images.unsplash.com/photo-1744402021279-1dff8880d207?w=200&h=200&fit=crop" },
+      { "name": "Bullet Journal", "price": "₹350", "image": "https://images.unsplash.com/photo-1711030239034-d7dbf7f2794d?w=200&h=200&fit=crop" },
+      { "name": "Washi Tape Set (5)", "price": "₹180", "image": "https://images.unsplash.com/photo-1731575131896-c8bd19209358?w=200&h=200&fit=crop" },
+      { "name": "Desk Organiser", "price": "₹499", "image": "https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?w=200&h=200&fit=crop" }
+    ],
+    "reviews": [
+      { "name": "Neha G.", "rating": 5, "text": "A paradise for stationery lovers! Great prices too." }
+    ]
+  },
+  {
+    "id": "petal-paradise",
+    "name": "Petal Paradise",
+    "category": "florist",
+    "area": "Whitefield",
+    "tagline": "Fresh flowers, crafted with care",
+    "story": "Petal Paradise grows its own flowers on a small farm on the outskirts of the city. Every bouquet is handcrafted by our florists. We believe flowers are nature's way of smiling — and we deliver that smile to your door.",
+    "image": "https://images.unsplash.com/photo-1753982861969-295e79c4bf78?w=400&h=300&fit=crop",
+    "logo": "https://images.unsplash.com/photo-1753982861969-295e79c4bf78?w=80&h=80&fit=crop",
+    "verified": true,
+    "products": [
+      { "name": "Mixed Rose Bouquet", "price": "₹499", "image": "https://images.unsplash.com/photo-1771121412135-c4f0c24fe677?w=200&h=200&fit=crop" },
+      { "name": "Lily Arrangement", "price": "₹699", "image": "https://images.unsplash.com/photo-1752862102457-636e93e47c72?w=200&h=200&fit=crop" },
+      { "name": "Wildflower Bunch", "price": "₹349", "image": "https://images.unsplash.com/photo-1762032313203-b51ec8f65964?w=200&h=200&fit=crop" },
+      { "name": "Orchid Pot", "price": "₹899", "image": "https://images.unsplash.com/photo-1748115234744-c914dcbd1cc9?w=200&h=200&fit=crop" }
+    ],
+    "reviews": [
+      { "name": "Sneha R.", "rating": 5, "text": "Stunning arrangements! Made my sister's day special." }
+    ]
+  },
+  {
+    "id": "fresho-fish",
+    "name": "Fresho Fish & Meats",
+    "category": "meat",
+    "area": "BTM Layout",
+    "tagline": "Catch of the day, delivered to your kitchen",
+    "story": "We source our meat and seafood directly from trusted suppliers and local fish markets. Every piece is cleaned, cut, and packed fresh daily. Quality and hygiene are non-negotiable for us.",
+    "image": "https://images.unsplash.com/photo-1773427258262-113feee8f6df?w=400&h=300&fit=crop",
+    "logo": "https://images.unsplash.com/photo-1773427258262-113feee8f6df?w=80&h=80&fit=crop",
+    "verified": true,
+    "products": [
+      { "name": "Chicken Curry Cut (500g)", "price": "₹180", "image": "https://images.unsplash.com/photo-1682991136736-a2b44623eeba?w=200&h=200&fit=crop" },
+      { "name": "Fresh Fish (1kg)", "price": "₹350", "image": "https://images.unsplash.com/photo-1777049645735-dcb3961069cb?w=200&h=200&fit=crop" },
+      { "name": "Mutton (500g)", "price": "₹320", "image": "https://images.unsplash.com/photo-1700481158997-60ff09259f24?w=200&h=200&fit=crop" },
+      { "name": "Prawns (250g)", "price": "₹240", "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=200&h=200&fit=crop" }
+    ],
+    "reviews": [
+      { "name": "Rajesh K.", "rating": 5, "text": "Best quality meat in BTM. Always fresh!" }
+    ]
+  },
+  {
+    "id": "brew-haven",
+    "name": "Brew Haven Café",
+    "category": "cafe",
+    "area": "Indiranagar",
+    "tagline": "Specialty coffee, crafted slowly",
+    "story": "Brew Haven is a third-wave coffee café started by two baristas who wanted to make great coffee accessible. We roast our own beans and train every barista to nail the perfect pour-over. Come for the coffee, stay for the vibe.",
+    "image": "https://images.unsplash.com/photo-1751956066306-c5684cbcf385?w=400&h=300&fit=crop",
+    "logo": "https://images.unsplash.com/photo-1751956066306-c5684cbcf385?w=80&h=80&fit=crop",
+    "verified": false,
+    "products": [
+      { "name": "Cold Brew (500ml)", "price": "₹180", "image": "https://images.unsplash.com/photo-1765690835487-8da60d318d0f?w=200&h=200&fit=crop" },
+      { "name": "Espresso Beans (250g)", "price": "₹350", "image": "https://images.unsplash.com/photo-1768498855458-f6ce1068f02f?w=200&h=200&fit=crop" },
+      { "name": "Matcha Latte", "price": "₹220", "image": "https://images.unsplash.com/photo-1768203630324-4a456ef7148f?w=200&h=200&fit=crop" },
+      { "name": "Croissant Sandwich", "price": "₹250", "image": "https://images.unsplash.com/photo-1771285119308-c1222ed84022?w=200&h=200&fit=crop" }
+    ],
+    "reviews": [
+      { "name": "Divya M.", "rating": 5, "text": "Best cold brew in town! The beans are incredible." }
+    ]
+  }
+]

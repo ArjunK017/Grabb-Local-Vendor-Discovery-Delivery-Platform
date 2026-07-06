@@ -45,7 +45,7 @@ export default function Privacy() {
       </section>
 
       {/* Horizontal TOC */}
-      <section className="-mt-3 pb-8 md:pb-10">
+      <section className="mt-6 pb-8 md:pb-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}

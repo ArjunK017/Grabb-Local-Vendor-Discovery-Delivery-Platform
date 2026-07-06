@@ -102,7 +102,7 @@ export default function FAQ() {
       </section>
 
       {/* FAQ Content */}
-      <section className="pb-20 md:pb-28">
+      <section className="mt-6 pb-20 md:pb-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {filtered.length > 0 ? (
             filtered.map((section, si) => (

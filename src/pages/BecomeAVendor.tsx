@@ -95,7 +95,7 @@ export default function BecomeAVendor() {
       </section>
 
       {/* Benefits */}
-      <section className="pb-16 md:pb-24">
+      <section className="pb-16 md:pb-24 mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

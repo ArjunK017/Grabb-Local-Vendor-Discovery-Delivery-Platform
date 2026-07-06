@@ -109,7 +109,7 @@ export default function Footer() {
             <ul className="space-y-3.5">
               {[
                 { to: '/contact', label: 'Contact Us' },
-                { to: '/terms', label: 'Terms of Use' },
+                { to: '/terms', label: 'Terms of Service' },
                 { to: '/privacy', label: 'Privacy Policy' },
               ].map((link, i) => (
                 <motion.li key={link.to} custom={i} variants={linkVariants}>

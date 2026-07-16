@@ -63,7 +63,7 @@ export default function Header() {
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-ocean to-ocean-dark flex items-center justify-center text-white shadow-lg shadow-ocean/25 group-hover:shadow-ocean/40 transition-shadow">
                 <ShoppingBag className="w-4.5 h-4.5" />
               </div>
-              <span className="font-fraunces text-lg font-bold text-navy tracking-tight">Grabb</span>
+              <span className="font-fraunces text-xl font-bold text-navy tracking-tight">Grabb</span>
             </Link>
 
             {/* Nav Links */}
@@ -73,7 +73,7 @@ export default function Header() {
                   key={link.to}
                   to={link.to}
                   end={link.to === '/'}
-                  className="relative px-3.5 py-2 rounded-full text-sm font-medium transition-all duration-300"
+                  className="relative px-3.5 py-2 rounded-full text-base font-medium transition-all duration-300"
                 >
                   {({ isActive }) => (
                     <>
@@ -96,7 +96,7 @@ export default function Header() {
             {/* CTA */}
             <Link
               to="/become-a-vendor"
-              className="group relative inline-flex items-center gap-2 bg-navy text-white pl-5 pr-6 py-2.5 rounded-full text-sm font-semibold hover:bg-ocean transition-colors duration-300 ml-1"
+              className="group relative inline-flex items-center gap-2 bg-navy text-white pl-5 pr-6 py-2.5 rounded-full text-base font-semibold hover:bg-ocean transition-colors duration-300 ml-1"
             >
               <span>Vendor</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />

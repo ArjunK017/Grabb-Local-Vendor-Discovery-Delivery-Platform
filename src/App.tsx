@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import CustomCursor from './components/CustomCursor'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -13,6 +14,15 @@ import FAQ from './pages/FAQ'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 
+/* ── Scroll to top on route change ── */
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
 /* ── Analytics hook placeholder (FR-32) ── */
 const AnalyticsHook = () => {
   // Reserved space for Plausible/GA4 script injection
@@ -23,6 +33,7 @@ export default function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <AnalyticsHook />
+      <ScrollToTop />
       <CustomCursor />
       <Header />
       <main className="flex-1">
